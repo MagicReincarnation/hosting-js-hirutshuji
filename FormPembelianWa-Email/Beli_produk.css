@@ -1,0 +1,397 @@
+.hiddenBuy {
+  display:none;
+  visibility: hidden;
+}
+
+.visibleBuy {
+  visibility: visible;
+   opacity: 0; /* Atur opasitas awal menjadi 0 */
+animation: slideUpbuy 0.5s ease 0s 1 normal forwards;
+}
+@keyframes slideUpbuy {
+	0% {
+		opacity: 0;
+		transform: translateY(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.ccpopup_frmProduk {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: brightness(0.5);
+}
+
+
+.listProduk {
+    position: relative;
+    height: 100%;
+}
+
+form#frmProduk {
+    padding: 15px;
+    background: #f1f1f1;
+    width: 300px;
+    max-width: 600px;
+    border-radius: 15px;
+    margin: 0 5px 0 0;
+    border: 2px solid #9980ff;
+}
+
+form#frmProduk {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 80%;
+    margin-top: 10px;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+form#frmProduk::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 30px;
+}
+
+form#frmProduk::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+	border-radius: 30px;
+	display: none;
+}
+
+form#frmProduk::-webkit-scrollbar-thumb
+{
+	background-color: #9980ff;	
+	background-image: -webkit-linear-gradient(45deg,
+	                                          rgba(255, 255, 255, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, .2) 50%,
+											  rgba(255, 255, 255, .2) 75%,
+											  transparent 75%,
+											  transparent);
+
+border-radius: 30px;
+}
+
+
+
+
+.metodeViabuy {
+    margin: 5px 0;
+    display: grid;
+    gap: 5px 0;
+}
+span.syrtx {
+    width: 100%;
+    display: inline-flex;
+    font-size: 12px;
+    margin: 10px 0;
+    gap: 0 10px;
+}
+
+img#thumbailProduk {
+    width: 115px;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid #9980ff;
+    max-height: 100px;
+    object-fit: cover;
+}
+
+.headerProduk.one {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+}
+.headerProduk.one label[for="namaProduk"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    font-family: monospace;
+}
+span#namaProduk {
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+.headerharga {
+    position: relative;
+    left: -50px;
+}
+
+label[for="hargaProduk"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    font-family: monospace;
+}
+span#hargaProduk {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: fantasy;
+}
+p.rupiah,.dolar {
+    position: relative;
+}
+p.rupiah:before {
+    content: "Rp";
+    font-size: 14px;
+    position: relative;
+    top: -18px;
+    left: 0;
+    color: #9980ff;
+}
+p.dolar:before {
+    content: "$";
+    font-size: 14px;
+    position: relative;
+    top: -18px;
+    left: 0;
+    color: #9980ff;
+}
+
+label#pilihmetodePembayaran {
+    font-size: 12px;
+    font-weight: 600;
+}
+.metodePembayaran {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 10px;
+}
+
+
+/* Tata letak opsi pembayaran */
+.metodePembayaran div {
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+/* Gaya tombol radio */
+.metodePembayaran input[type="radio"] {
+  display: none; /* Sembunyikan tombol radio bawaan */
+}
+
+/* Gaya label untuk tombol radio yang disesuaikan */
+.metodePembayaran input[type="radio"] + label {
+    display: flex;
+    padding: 5px 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    line-height: 50px;
+    cursor: pointer;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Gaya label untuk tombol radio yang dipilih */
+.metodePembayaran input[type="radio"]:checked + label {
+  background-color: #9980ff;
+  color: #fff;
+  border-color: #9980ff;
+}
+
+
+label#pilihmetodePesan {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Tata letak tombol radio */
+.metodePesanan input[type="radio"] {
+  display: none; /* Sembunyikan tombol radio bawaan */
+}
+
+/* Gaya label untuk tombol radio */
+.metodePesanan label {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Gaya label untuk tombol radio yang dipilih */
+.metodePesanan input[type="radio"]:checked + label {
+  background-color: #CB0011;
+  color: #fff;
+  border-color: #CB0011;
+}
+
+
+label[for="notes"] {
+    font-size: 12px;
+    font-weight: 600;
+}
+textarea#catatatanPembeli:focus {
+    outline: 2px solid #9980ff;
+    border: none;
+}
+
+textarea#catatatanPembeli {
+    background: #0000;
+    color: #222;
+    border: 2px solid #ddd;
+    resize: none;
+    height: 50px;
+    max-height: 100px;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+button#kirimPesanan {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px 0;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+button#kirimPesanan:before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='1'%3E%3Cpath d='m4 7l.867 12.143a2 2 0 0 0 2 1.857h10.276a2 2 0 0 0 2-1.857L20.01 7h-16zm4.5 0c0-1.653 1.5-4 3.5-4s3.5 2.347 3.5 4'/%3E%3Cpath d='M9.5 17c.413.462 1 1 2.5 1s2.5-.897 2.5-2s-1-1.5-2.5-2s-2-1.47-2-2c0-1.104 1-2 2-2s1.5 0 2.5 1'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+button#kirimPesanan:hover {
+  background-color: #45a049;
+}
+/* Tombol yang sedang disabled */
+button#kirimPesanan:disabled {
+  background-color: #ccc; /* Ubah warna latar belakang menjadi abu-abu */
+  color: #666; /* Ubah warna teks menjadi abu-abu yang lebih gelap */
+  cursor: not-allowed; /* Ubah kursor menjadi not-allowed */
+}
+
+/* Tombol yang tidak disabled */
+button#kirimPesanan:not(:disabled) {
+  background-color: #236e25; /* Ubah warna latar belakang menjadi biru */
+  color: #fff; /* Ubah warna teks menjadi putih */
+  cursor: pointer; /* Kembalikan kursor ke pointer */
+}
+
+
+
+
+.btnbuy {
+    width: -webkit-fill-available;
+    padding: 6px 0;
+    margin: 0.5em;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnbuy:before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 32 32'%3E%3Cpath fill='white' d='M4 7a1 1 0 0 0 0 2h2.22l2.624 10.5c.223.89 1.02 1.5 1.937 1.5h12.47c.903 0 1.67-.6 1.907-1.47L27.75 10h-2.094l-2.406 9H10.78L8.157 8.5A1.984 1.984 0 0 0 6.22 7zm18 14c-1.645 0-3 1.355-3 3s1.355 3 3 3s3-1.355 3-3s-1.355-3-3-3m-9 0c-1.645 0-3 1.355-3 3s1.355 3 3 3s3-1.355 3-3s-1.355-3-3-3m3-14v5h-3l4 4l4-4h-3V7zm-3 16c.564 0 1 .436 1 1c0 .564-.436 1-1 1c-.564 0-1-.436-1-1c0-.564.436-1 1-1m9 0c.564 0 1 .436 1 1c0 .564-.436 1-1 1c-.564 0-1-.436-1-1c0-.564.436-1 1-1'/%3E%3C/svg%3E");
+}
+
+.btnbuy:hover {
+ color: black;
+}
+
+.btnbuy:after {
+ content: "";
+ background: white;
+ position: absolute;
+ z-index: -1;
+ left: -20%;
+ right: -20%;
+ top: 0;
+ bottom: 0;
+ transform: skewX(-45deg) scale(0, 1);
+ transition: all 0.5s;
+}
+
+.btnbuy:hover:after {
+ transform: skewX(-45deg) scale(1, 1);
+ -webkit-transition: all 0.5s;
+ transition: all 0.5s;
+}
+
+
+.closepopup_produk {
+    width: -webkit-fill-available;
+    margin: 0 30px;
+}
+
+.closeBuy {
+    width: -webkit-fill-available;
+    padding: 6px 0;
+    margin: 0.5em;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.closeBuy:before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 32 32'%3E%3Ccircle cx='10' cy='28' r='2' fill='white'/%3E%3Ccircle cx='24' cy='28' r='2' fill='white'/%3E%3Cpath fill='white' d='M4.98 2.804A1 1 0 0 0 4 2H0v2h3.18l3.84 19.196A1 1 0 0 0 8 24h18v-2H8.82l-.8-4H26a1 1 0 0 0 .976-.783L29.244 7h-2.047l-1.999 9H7.62Z'/%3E%3Cpath fill='white' d='M21.586 9.414L18 5.828V14h-2V5.828l-3.586 3.586L11 8l6-6l6 6z'/%3E%3C/svg%3E");
+}
+.closeBuy:hover {
+ color: black;
+}
+
+.closeBuy:after {
+ content: "";
+ background: white;
+ position: absolute;
+ z-index: -1;
+ left: -20%;
+ right: -20%;
+ top: 0;
+ bottom: 0;
+ transform: skewX(-45deg) scale(0, 1);
+ transition: all 0.5s;
+}
+
+.closeBuy:hover:after {
+ transform: skewX(-45deg) scale(1, 1);
+ -webkit-transition: all 0.5s;
+ transition: all 0.5s;
+}
