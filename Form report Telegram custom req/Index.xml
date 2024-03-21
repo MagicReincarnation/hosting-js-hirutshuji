@@ -1,0 +1,30 @@
+<h1>Laporan Kerusakan Manga & Anime</h1>
+  <form id="reportFormLaporan_hirutshuji" enctype="multipart/form-data">
+   
+    <label for="nama_pelapor">Nama:</label>
+    <input placeholder="masukan nama kamu" type="text" id="nama_pelapor" name="nama_pelapor" required>
+      
+    <label for="ID_Telegram">ID Telegram:</label>
+    <input placeholder="Masukan ID Telegram (Wajib) " type="text" id="ID_Telegram" name="ID_Telegram" required>
+    
+    <fieldset class='kerusakan'>
+      <legend>Kerusakan:</legend>     
+ <div class="form-group">
+    <input type="checkbox" id="Bayar_Via" name="bayarVia" value="Trakteer">
+<label for="Bayar_Via">Trakteer</label>
+    </div>
+    </fieldset>
+    <label for="link">Link Postingan yang Rusak:</label>
+    <input placeholder="Masukan url yg rusak" type="url" id="linkReport" name="linkReport" value="">
+    
+    <label for="message">Pesan kamu:</label>
+    <textarea placeholder="Tulis pesan kepada admin, tidak diisi juga tidak apa-apa" id="pesan_pelapor" name="pesan_pelapor"></textarea>
+    
+<label class='custom-file-label' for="bukti_kerusakan">Bukti Kerusakan (Gambar atau Video):</label>
+<input class='custom-file-input' type="file" id="bukti_kerusakan" name="bukti_kerusakan" accept="image/*,video/*">
+<div id="imagePreview"></div>
+<div id="videoPreview"></div>
+<button type="sumbit">Kirim Laporan</button>
+
+
+  </form>  
