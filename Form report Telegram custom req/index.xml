@@ -1,0 +1,56 @@
+<script>
+   var passwordLaporan = '123';
+   var password_aktif = true;
+   var nama_webkamu = "Zeistmaid";
+   
+   
+  const tokenBot_telegram = 'xxxxxxx:xxxxxxxxxxx'; // Ganti dengan token bot kamu
+          
+  const chat_Idgrup = '-10xxxxxxx'; // Ganti dengan chat id grup bot kamu
+          
+          
+ var Credit_Hirutshuji = "Hirutshuji";
+ var webhiru_datakodehiru = "datakodehiru.blogspot.com";  
+ 
+ 
+function runformatPesan_hr(formData){
+var formatPesan_hr = `<code>
+=== Laporan Situs website ===
++++++++++++++++++++++++++++++
+situs: 
+
+${nama_webkamu}
+----------------------
+Nama:
+
+${formData.get('nama_pelapor')}
+----------------------               
+ID Telegram: 
+
+${formData.get('ID_Telegram')}
+----------------------               
+Bayar Via:
+
+${formData.getAll('bayarVia').map(val => `${val}`).join(', ')}
+----------------------               
+Tanggal Laporan:
+ 
+${new Date().toISOString().split('T')[0]}
+----------------------        
+Pesan User: 
+
+${formData.get('pesan_pelapor')}
+----------------------               
+Link Postingan dari user: 
+
+${formData.get('linkReport')}
+----------------------
+Link sumber asal Pesan:
+
+${window.location.href}
+----------------------        
+</code>`;
+return formatPesan_hr;
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/gh/MagicReincarnation/hosting-js-hirutshuji@main/Form%20report%20Telegram%20custom%20req/formPesanTelergam.js"></script>
