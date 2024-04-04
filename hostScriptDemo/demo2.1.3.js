@@ -9,15 +9,16 @@ let notifcheckrole = sistemRole.notifcheckrole;
 
 let letkontentsudahdibeli;
 
-function roleSistemCoin(){             if(memberCoin) {   
+function roleSistemCoin(){             
+  if(memberCoin) {   
   unlockMember();    
   unlockCoin();
   notifBoxch();        
   }else{
   unlockCoin();
   notifBoxch();     
-  }
-letkontentsudahdibeli = false;      }
+  }     
+}
 
 function checkMembershipExp() {
     const userId = auth.currentUser.uid;
@@ -81,6 +82,10 @@ function openCoin() {
             confirmButtonText: LogCode.kontentSudahdibeli.ya
           });
           roleSistemCoin();
+        }else {
+
+letkontentsudahdibeli = false; 
+          
         }
       }).catch((error) => {
         console.error("Error dalam pengecekan data:", error);
@@ -262,7 +267,7 @@ db.collection("users").doc(userId).onSnapshot(doc => {
 }
 
 function checkKesamaanrole(userIdx){
-  if(notifcheckrole){
+  if(notifcheckrole && !letkontentsudahdibeli){
 db.collection("users").doc(userIdx).get().then((doc) => {
     if (doc.exists) {
     let scheck = doc.data().role;
@@ -277,7 +282,8 @@ allowOutsideClick: false,
 confirmButtonText: LogCode.roleTidaksama.ya
         });
         checkrole = false;
-        console.log(`Role kamu (${scheck}) tidak sesuai dengan Role dari kontent Role (${datarolecheck}).`);
+        console.log(`Role kamu (${scheck}) tidak sesuai dengan Role dari kontent Role (${datarolecheck}).`);  
+letkontentsudahdibeli = true; 
     }  
     } else {
 console.log("Tidak ada data role!");
@@ -293,7 +299,7 @@ auth.onAuthStateChanged(user => {
   if (user && user.emailVerified) {
     openCoin();
     checkUserRole(user.uid);
-if (letkontentsudahdibeli){
+if (!letkontentsudahdibeli){
     checkKesamaanrole(user.uid);
 }
   } else {
