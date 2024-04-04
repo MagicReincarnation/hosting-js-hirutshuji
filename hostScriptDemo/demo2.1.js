@@ -6,7 +6,7 @@ let role5 = sistemRole.role5;
 let memberCoin = sistemRole.coinMember;
 let notifunlock = sistemRole.notifUnlock;
 let notifcheckrole = sistemRole.notifcheckrole;
-let letkontentsudahdibeli;
+let letkontentsudahdibeli = true;
 
 function roleSistemCoin(){             if(memberCoin) {   
   unlockMember();    
@@ -71,6 +71,7 @@ function openCoin() {
       const historyRef = dbrl.ref('Datapembelianuser/' + dataCoin + '/' + idPostCoin);   
       historyRef.once('value').then((snapshot) => {
         if (snapshot.exists()) {
+  letkontentsudahdibeli = false;
           Swal.fire({
             icon: 'info',
             title: LogCode.kontentSudahdibeli.judul,
@@ -79,14 +80,14 @@ function openCoin() {
             confirmButtonText: LogCode.kontentSudahdibeli.ya
           });
           roleSistemCoin();
-        }else {letkontentsudahdibeli = true;}
+        }
       }).catch((error) => {
         console.error("Error dalam pengecekan data:", error);
- letkontentsudahdibeli = true;
+ letkontentsudahdibeli = false;
       });
     }else{
    console.log("bukan kontent Coin");
-letkontentsudahdibeli = true;
+letkontentsudahdibeli = false;
    }
   }
 }
