@@ -6,7 +6,8 @@ let role5 = sistemRole.role5;
 let memberCoin = sistemRole.coinMember;
 let notifunlock = sistemRole.notifUnlock;
 let notifcheckrole = sistemRole.notifcheckrole;
-let letkontentsudahdibeli = true;
+
+let letkontentsudahdibeli;
 
 function roleSistemCoin(){             if(memberCoin) {   
   unlockMember();    
@@ -16,7 +17,7 @@ function roleSistemCoin(){             if(memberCoin) {
   unlockCoin();
   notifBoxch();     
   }
-}
+letkontentsudahdibeli = false;      }
 
 function checkMembershipExp() {
     const userId = auth.currentUser.uid;
@@ -83,11 +84,9 @@ function openCoin() {
         }
       }).catch((error) => {
         console.error("Error dalam pengecekan data:", error);
- letkontentsudahdibeli = false;
       });
     }else{
    console.log("bukan kontent Coin");
-letkontentsudahdibeli = false;
    }
   }
 }
@@ -274,10 +273,9 @@ if (datarolecheck && checkrole && datarolecheck !== scheck) {
 icon: 'info',
 title: LogCode.roleTidaksama.judul,
 text: LogCode.roleTidaksama.pesan,
-allowOutsideClick: false,            
+allowOutsideClick: false,          
 confirmButtonText: LogCode.roleTidaksama.ya
         });
-  letkontentsudahdibeli = false;
         checkrole = false;
         console.log(`Role kamu (${scheck}) tidak sesuai dengan Role dari kontent Role (${datarolecheck}).`);
     }  
