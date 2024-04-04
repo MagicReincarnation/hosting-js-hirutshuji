@@ -7,7 +7,7 @@ let memberCoin = sistemRole.coinMember;
 let notifunlock = sistemRole.notifUnlock;
 let notifcheckrole = sistemRole.notifcheckrole;
 
-let letkontentsudahdibeli;
+let letkontentsudahdibeli = false;
 
 function roleSistemCoin(){             
   if(memberCoin) {   
@@ -73,7 +73,7 @@ function openCoin() {
       const historyRef = dbrl.ref('Datapembelianuser/' + dataCoin + '/' + idPostCoin);   
       historyRef.once('value').then((snapshot) => {
         if (snapshot.exists()) {
-  letkontentsudahdibeli = false;
+  letkontentsudahdibeli = true;
           Swal.fire({
             icon: 'info',
             title: LogCode.kontentSudahdibeli.judul,
@@ -82,10 +82,6 @@ function openCoin() {
             confirmButtonText: LogCode.kontentSudahdibeli.ya
           });
           roleSistemCoin();
-        }else {
-
-letkontentsudahdibeli = true; 
-          
         }
       }).catch((error) => {
         console.error("Error dalam pengecekan data:", error);
@@ -298,10 +294,8 @@ function runCheck(){
 auth.onAuthStateChanged(user => {
   if (user && user.emailVerified) {
     openCoin();
-    checkUserRole(user.uid);
-if (letkontentsudahdibeli){
+    checkUserRole(user.uid);    
     checkKesamaanrole(user.uid);
-}
   } else {
      }
    });
