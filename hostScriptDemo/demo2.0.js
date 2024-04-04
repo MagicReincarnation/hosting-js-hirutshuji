@@ -82,9 +82,11 @@ function openCoin() {
         }else {letkontentsudahdibeli = true;}
       }).catch((error) => {
         console.error("Error dalam pengecekan data:", error);
+ letkontentsudahdibeli = true;
       });
     }else{
    console.log("bukan kontent Coin");
+letkontentsudahdibeli = true;
    }
   }
 }
