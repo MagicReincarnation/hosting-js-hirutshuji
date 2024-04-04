@@ -93,12 +93,9 @@ function openCoin() {
 }
 
 const buttonsCoin = document.querySelectorAll(".Btn_coin");
-if (buttonsCoin){  
+if (buttonsCoin){ 
 buttonsCoin.forEach(bc => {
-  bc.addEventListener("click", function() {  checkDomainBeforeAuthlisensiConfig((isAllowed) => {
-  if (!isAllowed) {
-    return;
-  } else {
+  bc.addEventListener("click", function() {  
     if (!auth.currentUser) {
       Swal.fire({
         icon: 'error',
@@ -122,7 +119,15 @@ confirmButtonText:LogCode.coinLogin.ya
       const matchesbc = decryptedValuebc.match(/\d+/);
       if (matchesbc && matchesbc.length > 0) {
         const syaratCoinbc = parseInt(matchesbc[0]);
-        CoinValidator.checkCoinBalance(syaratCoinbc);
+ 
+checkDomainBeforeAuthlisensiConfig((isAllowed) => {
+  if (!isAllowed) {
+    return;
+  } else {        CoinValidator.checkCoinBalance(syaratCoinbc);   
+/*lisensi*/    
+  } 
+});
+/*lisensi*/       
       } else {
         console.error("Tidak dapat menemukan coin yang didekripsi.");
       }
@@ -130,10 +135,6 @@ confirmButtonText:LogCode.coinLogin.ya
       console.error("Tidak dapat menemukan coin yang dienkripsi");
     }
   });
-/*lisensi*/    
-  } 
-});
-/*lisensi*/
 });
 
 const CoinValidator = (function() {
