@@ -270,7 +270,6 @@ db.collection("users").doc(userIdx).get().then((doc) => {
     let datarolecheck = document.querySelector('.datarole').getAttribute('data-role');
     let checkrole = true;
 if (datarolecheck && checkrole && datarolecheck !== scheck) {
-if (letkontentsudahdibeli){
    Swal.fire({
 icon: 'info',
 title: LogCode.roleTidaksama.judul,
@@ -278,7 +277,6 @@ text: LogCode.roleTidaksama.pesan,
 allowOutsideClick: false,            
 confirmButtonText: LogCode.roleTidaksama.ya
         });
-}
   letkontentsudahdibeli = false;
         checkrole = false;
         console.log(`Role kamu (${scheck}) tidak sesuai dengan Role dari kontent Role (${datarolecheck}).`);
@@ -297,7 +295,9 @@ auth.onAuthStateChanged(user => {
   if (user && user.emailVerified) {
     openCoin();
     checkUserRole(user.uid);
+if (letkontentsudahdibeli){
     checkKesamaanrole(user.uid);
+}
   } else {
      }
    });
