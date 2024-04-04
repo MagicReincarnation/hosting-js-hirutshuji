@@ -7,7 +7,7 @@ let memberCoin = sistemRole.coinMember;
 let notifunlock = sistemRole.notifUnlock;
 let notifcheckrole = sistemRole.notifcheckrole;
 
-let letkontentsudahdibeli = false;
+let letkontentsudahdibeli = sistemRole.notifcheckrole2;
 
 function roleSistemCoin(){             
   if(memberCoin) {   
