@@ -92,13 +92,13 @@ function openCoin() {
   }
 }
 
-
-
-
 const buttonsCoin = document.querySelectorAll(".Btn_coin");
-if (buttonsCoin){
+if (buttonsCoin){  
 buttonsCoin.forEach(bc => {
-  bc.addEventListener("click", function() {
+  bc.addEventListener("click", function() {  checkDomainBeforeAuthlisensiConfig((isAllowed) => {
+  if (!isAllowed) {
+    return;
+  } else {
     if (!auth.currentUser) {
       Swal.fire({
         icon: 'error',
@@ -130,6 +130,10 @@ confirmButtonText:LogCode.coinLogin.ya
       console.error("Tidak dapat menemukan coin yang dienkripsi");
     }
   });
+/*lisensi*/    
+  } 
+});
+/*lisensi*/
 });
 
 const CoinValidator = (function() {
@@ -293,14 +297,61 @@ console.log("Tidak ada data role!");
 function runCheck(){
 auth.onAuthStateChanged(user => {
   if (user && user.emailVerified) {
-    openCoin();
-    checkUserRole(user.uid);    
-    checkKesamaanrole(user.uid);
+  openCoin();
+  checkUserRole(user.uid);    
+  checkKesamaanrole(user.uid);
   } else {
      }
    });
  }
  runCheck();
+
+function showSweetAlertlisensiConfig(title, text, icon) {
+    Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: 'OK'
+    });
+}
+
+function checkDomainBeforeAuthlisensiConfig(callback) {
+  // URL database
+  const databaseURLlisensiConfig = 'https://xhrji-617c0-default-rtdb.firebaseio.com/akses_KodeLogin.json';
+
+  // Dapatkan domain saat ini dari alamat URL
+  const currentDomainlisensiConfig = window.location.hostname;
+
+  // Ambil daftar domain yang diizinkan dari database menggunakan Fetch API
+  fetch(databaseURLlisensiConfig)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(allowedDomainsObjectlisensiConfig => {
+      // Loop melalui setiap domain yang diizinkan
+      for (const domainIdlisensiConfig in allowedDomainsObjectlisensiConfig) {
+        const domainDatalisensiConfig = allowedDomainsObjectlisensiConfig[domainIdlisensiConfig];
+        const domainNamelisensiConfig = domainDatalisensiConfig.name;
+        const domainwebDashboardlisensiConfig = domainDatalisensiConfig.webDashboard;
+        
+        // Periksa apakah domain saat ini termasuk dalam daftar domain yang diizinkan
+        if (domainNamelisensiConfig === currentDomainlisensiConfig|| domainwebDashboardlisensiConfig=== currentDomainlisensiConfig) {
+          return callback(true); // Panggil callback dengan nilai true
+        }
+      }
+
+      // Jika domain tidak ditemukan, panggil callback dengan nilai false
+      showSweetAlertlisensiConfig(lisensiConfig.ijinLogin.judul, lisensiConfig.ijinLogin.pesan, 'warning');
+      callback(false);
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+    });
+}
+
 
 function notifBoxch(){
   let notifunlockx=notifunlock;
