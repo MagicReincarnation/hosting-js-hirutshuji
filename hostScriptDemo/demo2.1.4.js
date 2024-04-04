@@ -13,10 +13,12 @@ function roleSistemCoin(){
   if(memberCoin) {   
   unlockMember();    
   unlockCoin();
-  notifBoxch();        
+  notifBoxch();    
+letkontentsudahdibeli = true; 
   }else{
   unlockCoin();
   notifBoxch();     
+letkontentsudahdibeli = true; 
   }     
 }
 
