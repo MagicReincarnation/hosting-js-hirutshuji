@@ -1,0 +1,397 @@
+  <!-- SweetAlert CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<style>
+  :root {
+   --bg-report:#222;
+    --color-report:#ccc;
+   }
+#reportFormLaporan_hirutshuji {
+    padding: 20px;
+    background-color:var(--bg-report);
+    color: var(--color-report);
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    overflow: hidden;
+}
+  
+#reportFormLaporan_hirutshuji label,
+#reportFormLaporan_hirutshuji input,
+#reportFormLaporan_hirutshuji textarea,.kerusakan {
+  display: block;
+  margin-bottom: 20px;
+}
+.kerusakan {padding:20px}
+#reportFormLaporan_hirutshuji input{
+  width: 100%;
+  padding: 8px;
+}
+  #reportFormLaporan_hirutshuji textarea {
+  border:1px solid var(--color-report);
+  border-radius:5px;
+  resize: none;
+  width: 100%;
+  height:auto;
+  padding: 8px;
+}
+
+#reportFormLaporan_hirutshuji .buttonSumbitReport {
+  padding: 10px 20px;
+  background-color: #FF9100;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius:5px;
+}
+
+#reportFormLaporan_hirutshuji .buttonSumbitReport:hover {
+  background-color: #0056b3;
+}
+
+input.lrp {
+  padding: 0;
+  border:1px solid var(--color-report);
+  border-radius:5px;
+  height: initial;
+  width: initial;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+input.lrp,#reportFormLaporan_hirutshuji textarea  {
+  background-color: #0000;
+  color:var(--color-report);}
+  
+.lrp::placeholder,#reportFormLaporan_hirutshuji textarea::placeholder {color:var(--color-report)}
+.lrp:focus,#reportFormLaporan_hirutshuji textarea:focus {outline: 1px solid #00FFDD;}
+
+.form-group {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none !important;
+  cursor: pointer;
+}
+
+.form-group label {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-group label:before {
+  content:'';
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid #0079bf;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.form-group input:checked + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid #0079bf;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.custom-file-input {
+  display: inline-block;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.custom-file-label {
+  display: inline-block;
+  background-color: #007bff; 
+  color: #fff;
+  padding: 8px 12px; 
+  border-radius: 4px; */
+  cursor: pointer;
+}
+
+.custom-file-label::before {
+  content: 'Upload File';
+}
+
+.custom-file-label:hover {
+  background-color: #0056b3;
+}
+div#imagePreview {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    max-width: 360px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+div#videoPreview {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    max-width: 360px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+div#imagePreview img {
+    width: 100%;
+    height: auto;
+}
+div#videoPreview video {
+    width: 100%;
+    height: auto;
+}
+
+
+
+/*popup by https://codepen.io/NyBu/pen/BrXpwV*/
+  
+.triggers {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+  flex-direction: column;
+}
+
+.triggers label {
+  cursor: pointer;
+  height: 43px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #3a4047;
+  border: 2px solid #3a4047;
+  border-radius: 21.5px;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+
+/** START POPUP CSS **/
+.vcms__popup-check {
+  display: none;
+}
+.vcms__popup {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.25s ease-in-out;
+  transition-delay: 0.65s, 0.2s;
+}
+
+.vcms__popup-check:checked + .vcms__popup {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s, 0s;
+}
+
+.vcms__popup .inner {
+  width: 540px;
+  max-width: 95%;
+  border-radius: 20px;
+  box-shadow: 0 9px 23px 0 rgba(0, 0, 0, 0.15);
+  background-color:var(--bg-report);
+  box-sizing: border-box;
+  margin-bottom: 100px;
+  opacity: 0;
+  transition: margin-bottom 0.4s cubic-bezier(0.42, 0.72, 0.37, 1.31),
+    opacity 0.25s ease-in-out;
+  transition-delay: 0s, 0s;
+}
+
+.vcms__popup-check:checked + .vcms__popup .inner {
+  transition-delay: 0.15s, 0.15s;
+  margin-bottom: 0;
+  opacity: 1;
+}
+
+.vcms__popup .inner .header {
+  padding: 20px 25px 13px;
+  font-size: 28px;
+  color:var(--color-report);
+  background-color: var(--bg-report);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.vcms__popup .inner .txt {
+  line-height: 27px;
+  padding: 20px 25px;
+  max-height: calc(100vh - 260px);
+  overflow: auto;
+}
+
+.vcms__popup .inner .footer {
+  box-sizing: border-box;
+  padding: 15px 25px 20px;
+  border-top: 1px solid #efefef;
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--bg-report);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.vcms__popup .inner .footer .btn {
+  height: 43px;
+  width: 156px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:var(--color-report);
+  text-decoration: none;
+  font-size: 13px;
+  border: 2px solid #3a4047;
+  border-radius: 21.5px;
+  box-sizing: border-box;
+  font-weight: 600;
+  transition: all 0.15s ease-in-out;
+}
+
+.vcms__popup .inner .footer .close {
+  height: 43px;
+  width: 126px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bcbcbc;
+  text-decoration: none;
+  font-size: 13px;
+  border: 2px solid #dadada;
+  border-radius: 21.5px;
+  margin-left: 7px;
+  box-sizing: border-box;
+  font-weight: 600;
+  cursor: pointer;
+  flex-grow: 0;
+  flex-shrink: 0;
+  transition: all 0.15s ease-in-out;
+}
+
+.vcms__popup .inner .footer .btn:hover,
+.vcms__popup .inner .footer .close:hover {
+  background-color: #3a4047;
+  color: #fff;
+  border: 2px solid #3a4047;
+}
+
+  
+ </style>
+
+<div class="separator" style="clear: both; text-align: center;width:100%;height:auto;"><iframe class="BLOG_video_class" allowfullscreen="" youtube-src-id="vbuxzfUbJOo" src="https://www.youtube.com/embed/vbuxzfUbJOo"></iframe></div>
+
+<!-- Popup codepen: https://codepen.io/NyBu/pen/BrXpwV-->
+<div class="triggers">
+<label for="popup-1">Buka demo</label>
+</div>
+
+<input type="checkbox" class="vcms__popup-check" name="popup-1" id="popup-1"/>
+<div class="vcms__popup">
+  <div class="inner">
+    <div class="header">
+  Laporan Kerusakan Manga/ Anime  </div>
+    <div class="txt">
+  <form id="reportFormLaporan_hirutshuji" enctype="multipart/form-data">
+    <label for="nama_pelapor">Nama:</label>
+    <input class='lrp' placeholder="masukan nama kamu" type="text" id="nama_pelapor" name="nama_pelapor" required="required"/>
+      
+    <label for="series">Series:</label>
+    <input class='lrp' placeholder="Masukan nama Seriesnya" type="text" id="series" name="series"  required="required"/>
+    
+    <div class="NomorCh_Ep">
+      <legend>Chapter/Episode:</legend>
+      <input class='lrp' placeholder="masukan nomor Ch/EP 0.0" type="number" id="chapter_Episode" name="chapter_Episode" required="required"/>
+    </div>
+   
+    <fieldset class='kerusakan'>
+ <legend>Kerusakan:</legend>     
+ <div class="form-group">
+    <input type="checkbox" id="gambar_rusak" name="bugCh_Ep" value="Gambar Rusak"/>
+<label for="gambar_rusak">Gambar Rusak</label>
+    </div>  
+<div class="form-group">
+   <input type="checkbox" id="Gambar_hilang" name="bugCh_Ep" value="Gambar hilang"/>
+<label for="Gambar_hilang">Gambar hilang</label>
+    </div>
+    <div class="form-group">
+<input type="checkbox" id="video_tidak_berjalan" name="bugCh_Ep" value="Video Tidak Berjalan"/>
+<label for="video_tidak_berjalan">Video Tidak Berjalan</label>
+    </div>
+  <div class="form-group">
+<input type="checkbox" id="file_video_tidak_ada" name="bugCh_Ep" value="file Video Tidak ada"/>
+<label for="file_video_tidak_ada">file video Tidak ada</label>
+    </div>
+    </fieldset>
+    
+    <label for="link">Link Postingan yang Rusak (edit jika salah):</label>
+    <input class='lrp' placeholder="Masukan url Ch/Ep yg rusak" type="url" id="linkReport" name="linkReport" value=""  required="required"/>
+    
+    <label for="message">Pesan kamu:</label>
+    <textarea placeholder="Tulis pesan kepada admin, tidak diisi juga tidak apa-apa" id="pesan_pelapor" name="pesan_pelapor"></textarea>
+    
+<label class='custom-file-label' for="bukti_kerusakan"> (Gambar atau Video yg rusak abaikan juga tidak apa-apa):</label>
+<input class='custom-file-input' type="file" id="bukti_kerusakan" name="bukti_kerusakan" accept="image/*,video/*"/>
+    
+<div id="imagePreview"></div>
+<div id="videoPreview"></div>
+    
+       <button class='buttonSumbitReport' type="sumbit">Kirim Laporan</button>
+  </form> 
+    </div>
+    <div class="footer">
+  <a class="btn" href="#">Apa ini?</a>
+      <label class="close" for="popup-1">Batal</label>
+    </div>
+  </div>
+</div>
+
+<script>
+    /*<![CDATA[*/
+  var passwordLaporan = '123';
+  const tokenBot_telegram = '6427068077:AAFl1tZ76inr_3KUvasdGBfWp5eB99tv8vE'; // Ganti dengan token bot kamu
+          
+  const chat_Idgrup = '-1001952238178'; // Ganti dengan chat id grup bot kamu
+ 
+  const customName = 'No';      
+          
+ var Credit_Hirutshuji = "Hirutshuji";
+ var webhiru_datakodehiru = "datakodehiru.blogspot.com";  
+ 
+ var url = window.location.href;
+document.getElementById('linkReport').value = url;
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    var scriptElm = document.createElement('script');
+    scriptElm.src = 'source.js';
+ document.body.appendChild(scriptElm);
+});
+/*]]>*/
+</script>
